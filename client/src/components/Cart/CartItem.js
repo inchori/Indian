@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 export default class CartItem extends Component {
   render() {
     const { id, title, img, price, total } = this.props.item;

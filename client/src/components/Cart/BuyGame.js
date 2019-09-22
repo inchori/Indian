@@ -4,14 +4,15 @@ import getWeb3 from "../../utils/getWeb3";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class BuyGame extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       accounts: null,
       myGame: 0,
       web3: null,
       contract: null
     };
+
   }
 
   componentDidMount = async() => {
@@ -24,18 +25,17 @@ class BuyGame extends Component {
         IndianContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
-      this.setState({ web3, accounts: accounts[0], contract: instance });
-      this.updateMyGames();
+      this.setState({ web3, accounts: accounts[0], contract: instance }, () => console.log(this.state));
+      //this.updateMyGames();
     } catch (error) {
       alert(
         `Failed to load web3, accounts, or contract. Check console for details.`,
       );
       console.error(error);
-    }
+    } 
   }
 
   buyGame() {
-    console.log(this.state.web3);
     if(!this.state.contract) {
       alert('No Wallet Address!');
     }
@@ -46,28 +46,36 @@ class BuyGame extends Component {
     }); 
   }
 
-  sellMyGame() {
-    if(!this.state.contract) {
-      alert('No Wallet Address!');
-    }
-    this.state.contract.methods.sellMyGame(this.state.web3.utils.toWei('10', 'ether')).send({
-      from: this.state.accounts,
-      gas: 900000
-    });
-  }
+  // sellMyGame() {
+  //   if(!this.state.contract) {
+  //     alert('No Wallet Address!');
+  //   }
+  //   this.state.contract.methods.sellMyGame(this.state.web3.utils.toWei('10', 'ether')).send({
+  //     from: this.state.accounts,
+  //     gas: 900000
+  //   });
+  // }
 
-  updateMyGames() {
-    this.state.contract.methods.getMyGame().call({
-      from: this.state.accounts
-    }).then(result => {
-      this.setState({ myGame: Number(result) });
-      console.log(result);
-    });
-  }
+  // updateMyGames() {
+  //   this.state.contract.methods.getMyGame().call({
+  //     from: this.state.accounts
+  //   }).then(result => {
+  //     this.setState({ myGame: Number(result) });
+
+  //   });
+  // }
 
   render() {
     return ( 
-        <button onClick={() => this.buyGame()}>Purchase</button>
+    <div className="BuyGame">
+        <button 
+          className="btn btn-outline-danger text-uppercase mb-3 px-5"
+          type="button"
+          onClick={() => 
+            this.buyGame()}>
+            Purchase
+          </button>
+    </div>
     );
   }
 }

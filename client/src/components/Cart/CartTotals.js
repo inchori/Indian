@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import BuyGame from "./BuyGame";
+
 export default class CartTotals extends Component {
+  
+  
+
   render() {
     const {
       cartTotal,
       cart,
       clearCart,
+      buyGame
     } = this.props.value;
     const { history } = this.props;
+    console.log(this.props.value);
     const emptyCart = cart.length === 0 ? true : false;
     return (
       <React.Fragment>
@@ -31,7 +36,17 @@ export default class CartTotals extends Component {
                   <span className="text-title"> total :</span>{" "}
                   <strong> {cartTotal}ETH </strong>
                 </h5>
-                <BuyGame history = {history} />
+                <Link to="/">
+                  <button 
+                    className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                    type="button"
+                    onClick={() => {
+                      buyGame();
+                      }}
+                      >
+                    Purchase
+                    </button>
+                </Link>
               </div>
             </div>
           </div>
