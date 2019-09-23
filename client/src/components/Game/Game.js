@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Title from "../Title";
-import CartColumns from "./CartColumns";
-import CartList from "./CartList";
-import CartTotals from "./CartTotals";
+import GameColumns from "./GameColumns";
+import GameList from "./GameList";
 import { ProductConsumer } from "../../context";
-import EmptyCart from "./EmptyCart";
+import EmptyGame from "./Emptygame";
 
 export default class Store extends Component {
   render() {
@@ -12,20 +11,18 @@ export default class Store extends Component {
       <section>
         <ProductConsumer>
           {value => {
-            console.log(value);
             const { cart } = value;
-            console.log(this.props);
+            console.log(cart);
             if (cart.length > 0) {
               return (
                 <React.Fragment>
-                  <Title name="your" title="cart" />
-                  <CartColumns />
-                  <CartList value={value} />
-                  <CartTotals value={value} history={this.props.history} />
+                  <Title name="your" title="game" />
+                  <GameColumns />
+                  <GameList value = {value}/>
                 </React.Fragment>
               );
             } else {
-              return <EmptyCart />;
+              return <EmptyGame />;
             }
           }}
         </ProductConsumer>

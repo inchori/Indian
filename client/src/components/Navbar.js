@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "./../logo.svg";
+import logo from "./../logo.png";
 import { ButtonContainer } from "./Button";
 export default class Navbar extends Component {
   render() {
@@ -11,13 +11,16 @@ export default class Navbar extends Component {
 https://www.iconfinder.com/icons/1243689/call_phone_icon
 Creative Commons (Attribution 3.0 Unported);
 https://www.iconfinder.com/Makoto_msk */}
-        <Link to="/">
-          <img src={logo} alt="store" className="navbar-brand"/>
+        <div>
+          
+        </div>
+        <Link to="/" download="./../logo.png">
+          <img width="50" height="50" src={logo} alt="store" className="navbar-brand"></img>
         </Link>
         <ul className="navbar-nav align-items-center">
-          <li className="nav-item ml-5">
+          <li className="nav-item ml-0">
             <Link to="/" className="nav-link">
-              Indian
+              INDIAN
             </Link>
           </li>
         </ul>
@@ -26,16 +29,23 @@ https://www.iconfinder.com/Makoto_msk */}
             <span className="mr-2">
               <i className="fas fa-cart-plus" />
             </span>
-            my cart
+            MY CART
+          </ButtonContainer>
+        </Link>
+        <Link to="/game" className="ml-auto">
+          <ButtonContainer>
+            <span className="mr-2">
+              <i className="fas fa-cart-plus" />
+            </span>
+            MY GAME
           </ButtonContainer>
         </Link>
       </Nav>
     );
   }
 }
-
 const Nav = styled.nav`
-  background: var(--mainBlue);
+background: var(--mainDark);
   .nav-link {
     color: var(--mainWhite) !important;
     font-size:1.3rem;

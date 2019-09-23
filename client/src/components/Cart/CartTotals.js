@@ -11,7 +11,6 @@ export default class CartTotals extends Component {
       buyGame,
       investGame,
     } = this.props.value;
-    console.log(this.props.value);
     const emptyCart = cart.length === 0 ? true : false;
     return (
       <React.Fragment>
@@ -34,7 +33,7 @@ export default class CartTotals extends Component {
                   <span className="text-title"> total :</span>{" "}
                   <strong> {cartTotal}ETH </strong>
                 </h5>
-                <Link to="/cart">
+                <Link to="/game">
                   <button 
                     className="btn btn-outline-danger text-uppercase mb-3 px-5"
                     type="button"

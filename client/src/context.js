@@ -78,9 +78,9 @@ class ProductProvider extends Component {
         accounts: this.state.accounts,
         web3: this.state.web3,
         contract: this.state.contract
-
       };
     }, this.addTotals);
+    console.log(this.state.products);
   };
   openModal = id => {
     const product = this.getItem(id);
@@ -92,38 +92,6 @@ class ProductProvider extends Component {
     this.setState(() => {
       return { modalOpen: false };
     });
-  };
-  increment = id => {
-    let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item => {
-      return item.id === id;
-    });
-    const index = tempCart.indexOf(selectedProduct);
-    const product = tempCart[index];
-    product.count = product.count + 1;
-    product.total = product.count * product.price;
-    this.setState(() => {
-      return {
-        cart: [...tempCart]
-      };
-    }, this.addTotals);
-  };
-  decrement = id => {
-    let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item => {
-      return item.id === id;
-    });
-    const index = tempCart.indexOf(selectedProduct);
-    const product = tempCart[index];
-    product.count = product.count - 1;
-    if (product.count === 0) {
-      this.removeItem(id);
-    } else {
-      product.total = product.count * product.price;
-      this.setState(() => {
-        return { cart: [...tempCart] };
-      }, this.addTotals);
-    }
   };
   getTotals = () => {
     // const subTotal = this.state.cart
@@ -195,7 +163,8 @@ class ProductProvider extends Component {
       value: this.state.web3.utils.toWei(this.state.cartTotal.toString(), 'ether'),
       gas: 900000
     });
-  }
+  };
+
   investGame = () => {
     if(!this.state.contract) {
       alert('No Wallet Address!');
