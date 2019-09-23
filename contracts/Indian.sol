@@ -16,7 +16,4 @@ contract Indian {
         myGame[msg.sender] = 0;
         msg.sender.transfer(refund);
     }
-    function investGame() payable external {
-        myGame[msg.sender]++;
-    }
 }

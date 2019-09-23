@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { storeProducts, detailProduct } from "./data";
-import getWeb3 from "./utils/getWeb3";
-import IndianContract from "./contracts/Indian.json";
-import { jsonInterfaceMethodToString } from "web3-utils";
 const ProductContext = React.createContext();
-
 
 class ProductProvider extends Component {
   state = {
@@ -14,31 +10,11 @@ class ProductProvider extends Component {
     modalOpen: false,
     modalProduct: detailProduct,
     cartSubTotal: 0,
-    cartTotal: 0,
-    accounts: null,
-    myGame: 0,
-    web3: null,
-    contract: null
+    cartTax: 0,
+    cartTotal: 0
   };
-  componentDidMount = async() => {
+  componentDidMount() {
     this.setProducts();
-    try {
-      const web3 = await getWeb3();
-      const accounts = await web3.eth.getAccounts();
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = IndianContract.networks[networkId];
-      const instance = new web3.eth.Contract (
-        IndianContract.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
-      this.setState({ web3, accounts: accounts[0], contract: instance });
-      //this.updateMyGames();
-    } catch (error) {
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
-      );
-      console.error(error); 
-    }
   }
 
   setProducts = () => {
@@ -75,11 +51,7 @@ class ProductProvider extends Component {
       return {
         products: [...tempProducts],
         cart: [...this.state.cart, product],
-        detailProduct: { ...product },
-        accounts: this.state.accounts,
-        web3: this.state.web3,
-        contract: this.state.contract
-
+        detailProduct: { ...product }
       };
     }, this.addTotals);
   };
@@ -135,11 +107,14 @@ class ProductProvider extends Component {
     //   }, 0);
     let subTotal = 0;
     this.state.cart.map(item => (subTotal += item.total));
-    const total = subTotal;
+    const tempTax = subTotal * 0.1;
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + tax;
     return {
       subTotal,
+      tax,
       total
-    }
+    };
   };
   addTotals = () => {
     const totals = this.getTotals();
@@ -147,11 +122,12 @@ class ProductProvider extends Component {
       () => {
         return {
           cartSubTotal: totals.subTotal,
+          cartTax: totals.tax,
           cartTotal: totals.total
         };
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
       }
     );
   };
@@ -187,18 +163,7 @@ class ProductProvider extends Component {
       }
     );
   };
-  buyGame = () => {
-    if(!this.state.contract) {
-      alert('No Wallet Address!');
-    }
-    this.state.contract.methods.buyGame().send({
-      from: this.state.accounts,
-      value: this.state.web3.utils.toWei('10', 'ether'),
-      gas: 900000
-    });
-  }
   render() {
-    console.log(this.state);
     return (
       <ProductContext.Provider
         value={{
@@ -207,9 +172,10 @@ class ProductProvider extends Component {
           addToCart: this.addToCart,
           openModal: this.openModal,
           closeModal: this.closeModal,
+          increment: this.increment,
+          decrement: this.decrement,
           removeItem: this.removeItem,
-          clearCart: this.clearCart,
-          buyGame: this.buyGame
+          clearCart: this.clearCart
         }}
       >
         {this.props.children}
