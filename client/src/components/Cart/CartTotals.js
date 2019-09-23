@@ -2,17 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class CartTotals extends Component {
-  
-  
 
   render() {
     const {
       cartTotal,
       cart,
       clearCart,
-      buyGame
+      buyGame,
+      investGame,
     } = this.props.value;
-    const { history } = this.props;
     console.log(this.props.value);
     const emptyCart = cart.length === 0 ? true : false;
     return (
@@ -36,7 +34,7 @@ export default class CartTotals extends Component {
                   <span className="text-title"> total :</span>{" "}
                   <strong> {cartTotal}ETH </strong>
                 </h5>
-                <Link to="/">
+                <Link to="/cart">
                   <button 
                     className="btn btn-outline-danger text-uppercase mb-3 px-5"
                     type="button"
@@ -44,9 +42,22 @@ export default class CartTotals extends Component {
                       buyGame();
                       }}
                       >
-                    Purchase
+                    Buy
                     </button>
                 </Link>
+                <h5>
+                <Link to="/cart">
+                  <button 
+                    className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                    type="button"
+                    onClick={() => {
+                      investGame();
+                      }}
+                      >
+                    Invest
+                    </button>
+                </Link>
+                </h5>
               </div>
             </div>
           </div>

@@ -37,23 +37,32 @@
       "payable": true,
       "stateMutability": "payable",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "investGame",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getMyGame\",\"outputs\":[{\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"buyGame\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_gamePrice\",\"type\":\"uint256\"}],\"name\":\"sellMyGame\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/sic61/indian/contracts/Indian.sol\":\"Indian\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/sic61/indian/contracts/Indian.sol\":{\"keccak256\":\"0x9db6d5fc13f5b306b934bd2f5e140870124739a85666559398f551d1f21a63ff\",\"urls\":[\"bzzr://217d53ace4e461fe89926fd8ed361093b6d840cae846a2fc2416a21300bbab0a\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610293806100206000396000f3fe6080604052600436106100345760003560e01c806302056c8b1461003957806349cd2abf1461006c5780639ef2cece14610076575b600080fd5b34801561004557600080fd5b5061004e6100a4565b604051808261ffff1661ffff16815260200191505060405180910390f35b6100746100f8565b005b6100a26004803603602081101561008c57600080fd5b810190808035906020019092919050505061016b565b005b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff16905090565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff16021790555050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff1661ffff1602905060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548161ffff021916908361ffff1602179055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f19350505050158015610262573d6000803e3d6000fd5b50505056fea165627a7a7230582000e4969d753d0fb7ad667e8a16e85d9099be70c663d2e03bb56d6d131a40e6a10029",
-  "deployedBytecode": "0x6080604052600436106100345760003560e01c806302056c8b1461003957806349cd2abf1461006c5780639ef2cece14610076575b600080fd5b34801561004557600080fd5b5061004e6100a4565b604051808261ffff1661ffff16815260200191505060405180910390f35b6100746100f8565b005b6100a26004803603602081101561008c57600080fd5b810190808035906020019092919050505061016b565b005b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff16905090565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff16021790555050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff1661ffff1602905060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548161ffff021916908361ffff1602179055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f19350505050158015610262573d6000803e3d6000fd5b50505056fea165627a7a7230582000e4969d753d0fb7ad667e8a16e85d9099be70c663d2e03bb56d6d131a40e6a10029",
-  "sourceMap": "27:446:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:446:0;;;;;;;",
-  "deployedSourceMap": "27:446:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;176:95;;8:9:-1;5:2;;;30:1;27;20:12;5:2;176:95:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;93:75;;;:::i;:::-;;279:191;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;279:191:0;;;;;;;;;;;;;;;;;:::i;:::-;;176:95;219:6;245;:18;252:10;245:18;;;;;;;;;;;;;;;;;;;;;;;;;238:25;;176:95;:::o;93:75::-;140:6;:18;147:10;140:18;;;;;;;;;;;;;;;;:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;93:75::o;279:191::-;344:11;380:10;359:6;:18;366:10;359:18;;;;;;;;;;;;;;;;;;;;;;;;;:31;;;344:47;;423:1;402:6;:18;409:10;402:18;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;;;;;;;435:10;:19;;:27;455:6;435:27;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;435:27:0;279:191;;:::o",
-  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract Indian {\r\n    mapping (address => uint16) myGame;\r\n\r\n    function buyGame() payable external {\r\n        myGame[msg.sender]++;\r\n    }\r\n\r\n    function getMyGame() view external returns(uint16) {\r\n        return myGame[msg.sender];\r\n    }\r\n\r\n    function sellMyGame(uint _gamePrice) payable external {\r\n        uint refund = (myGame[msg.sender] * _gamePrice);\r\n        myGame[msg.sender] = 0;\r\n        msg.sender.transfer(refund);\r\n    }\r\n}",
-  "sourcePath": "C:/Users/sic61/indian/contracts/Indian.sol",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getMyGame\",\"outputs\":[{\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"buyGame\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_gamePrice\",\"type\":\"uint256\"}],\"name\":\"sellMyGame\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"investGame\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/sic61/indian2/contracts/Indian.sol\":\"Indian\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/sic61/indian2/contracts/Indian.sol\":{\"keccak256\":\"0x0108743a8e308b5c5ac84c06983d2704fad8658878ab009142780f0e320927e8\",\"urls\":[\"bzzr://3911c0c217e98e0637c8966f755a174420c07f74850bbf156c3d1a9f5f4101ed\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061031b806100206000396000f3fe60806040526004361061003f5760003560e01c806302056c8b1461004457806349cd2abf146100775780639ef2cece14610081578063efa43c22146100af575b600080fd5b34801561005057600080fd5b506100596100b9565b604051808261ffff1661ffff16815260200191505060405180910390f35b61007f61010d565b005b6100ad6004803603602081101561009757600080fd5b8101908080359060200190929190505050610180565b005b6100b761027c565b005b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff16905090565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff16021790555050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff1661ffff1602905060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548161ffff021916908361ffff1602179055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f19350505050158015610277573d6000803e3d6000fd5b505050565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505056fea165627a7a72305820818e483889da104510ee826e49e55f636e20a31054824220ba66ba545aef91450029",
+  "deployedBytecode": "0x60806040526004361061003f5760003560e01c806302056c8b1461004457806349cd2abf146100775780639ef2cece14610081578063efa43c22146100af575b600080fd5b34801561005057600080fd5b506100596100b9565b604051808261ffff1661ffff16815260200191505060405180910390f35b61007f61010d565b005b6100ad6004803603602081101561009757600080fd5b8101908080359060200190929190505050610180565b005b6100b761027c565b005b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff16905090565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff16021790555050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900461ffff1661ffff1602905060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548161ffff021916908361ffff1602179055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f19350505050158015610277573d6000803e3d6000fd5b505050565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505056fea165627a7a72305820818e483889da104510ee826e49e55f636e20a31054824220ba66ba545aef91450029",
+  "sourceMap": "27:530:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:530:0;;;;;;;",
+  "deployedSourceMap": "27:530:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;176:95;;8:9:-1;5:2;;;30:1;27;20:12;5:2;176:95:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;93:75;;;:::i;:::-;;279:191;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;279:191:0;;;;;;;;;;;;;;;;;:::i;:::-;;476:78;;;:::i;:::-;;176:95;219:6;245;:18;252:10;245:18;;;;;;;;;;;;;;;;;;;;;;;;;238:25;;176:95;:::o;93:75::-;140:6;:18;147:10;140:18;;;;;;;;;;;;;;;;:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;93:75::o;279:191::-;344:11;380:10;359:6;:18;366:10;359:18;;;;;;;;;;;;;;;;;;;;;;;;;:31;;;344:47;;423:1;402:6;:18;409:10;402:18;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;;;;;;;435:10;:19;;:27;455:6;435:27;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;435:27:0;279:191;;:::o;476:78::-;526:6;:18;533:10;526:18;;;;;;;;;;;;;;;;:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;476:78::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract Indian {\r\n    mapping (address => uint16) myGame;\r\n\r\n    function buyGame() payable external {\r\n        myGame[msg.sender]++;\r\n    }\r\n\r\n    function getMyGame() view external returns(uint16) {\r\n        return myGame[msg.sender];\r\n    }\r\n\r\n    function sellMyGame(uint _gamePrice) payable external {\r\n        uint refund = (myGame[msg.sender] * _gamePrice);\r\n        myGame[msg.sender] = 0;\r\n        msg.sender.transfer(refund);\r\n    }\r\n    function investGame() payable external {\r\n        myGame[msg.sender]++;\r\n    }\r\n}",
+  "sourcePath": "C:/Users/sic61/indian2/contracts/Indian.sol",
   "ast": {
-    "absolutePath": "/C/Users/sic61/indian/contracts/Indian.sol",
+    "absolutePath": "/C/Users/sic61/indian2/contracts/Indian.sol",
     "exportedSymbols": {
       "Indian": [
-        58
+        68
       ]
     },
-    "id": 59,
+    "id": 69,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -73,9 +82,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 58,
+        "id": 68,
         "linearizedBaseContracts": [
-          58
+          68
         ],
         "name": "Indian",
         "nodeType": "ContractDefinition",
@@ -85,7 +94,7 @@
             "id": 5,
             "name": "myGame",
             "nodeType": "VariableDeclaration",
-            "scope": 58,
+            "scope": 68,
             "src": "50:34:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -167,7 +176,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 130,
+                          "referencedDeclaration": 140,
                           "src": "147:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -229,7 +238,7 @@
               "parameters": [],
               "src": "129:0:0"
             },
-            "scope": 58,
+            "scope": 68,
             "src": "93:75:0",
             "stateMutability": "payable",
             "superFunction": null,
@@ -266,7 +275,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 130,
+                        "referencedDeclaration": 140,
                         "src": "252:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -351,7 +360,7 @@
               ],
               "src": "218:8:0"
             },
-            "scope": 58,
+            "scope": 68,
             "src": "176:95:0",
             "stateMutability": "view",
             "superFunction": null,
@@ -434,7 +443,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 130,
+                              "referencedDeclaration": 140,
                               "src": "366:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -536,7 +545,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 130,
+                          "referencedDeclaration": 140,
                           "src": "409:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -631,7 +640,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 130,
+                          "referencedDeclaration": 140,
                           "src": "435:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -732,27 +741,137 @@
               "parameters": [],
               "src": "333:0:0"
             },
-            "scope": 58,
+            "scope": 68,
             "src": "279:191:0",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 66,
+              "nodeType": "Block",
+              "src": "515:39:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 64,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "526:20:0",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 60,
+                        "name": "myGame",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5,
+                        "src": "526:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_uint16_$",
+                          "typeString": "mapping(address => uint16)"
+                        }
+                      },
+                      "id": 63,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 61,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 140,
+                          "src": "533:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 62,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "533:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "526:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint16",
+                        "typeString": "uint16"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "id": 65,
+                  "nodeType": "ExpressionStatement",
+                  "src": "526:20:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 67,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "investGame",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 58,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "495:2:0"
+            },
+            "returnParameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "515:0:0"
+            },
+            "scope": 68,
+            "src": "476:78:0",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 59,
-        "src": "27:446:0"
+        "scope": 69,
+        "src": "27:530:0"
       }
     ],
-    "src": "0:473:0"
+    "src": "0:557:0"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/sic61/indian/contracts/Indian.sol",
+    "absolutePath": "/C/Users/sic61/indian2/contracts/Indian.sol",
     "exportedSymbols": {
       "Indian": [
-        58
+        68
       ]
     },
-    "id": 59,
+    "id": 69,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -772,9 +891,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 58,
+        "id": 68,
         "linearizedBaseContracts": [
-          58
+          68
         ],
         "name": "Indian",
         "nodeType": "ContractDefinition",
@@ -784,7 +903,7 @@
             "id": 5,
             "name": "myGame",
             "nodeType": "VariableDeclaration",
-            "scope": 58,
+            "scope": 68,
             "src": "50:34:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -866,7 +985,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 130,
+                          "referencedDeclaration": 140,
                           "src": "147:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -928,7 +1047,7 @@
               "parameters": [],
               "src": "129:0:0"
             },
-            "scope": 58,
+            "scope": 68,
             "src": "93:75:0",
             "stateMutability": "payable",
             "superFunction": null,
@@ -965,7 +1084,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 130,
+                        "referencedDeclaration": 140,
                         "src": "252:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1050,7 +1169,7 @@
               ],
               "src": "218:8:0"
             },
-            "scope": 58,
+            "scope": 68,
             "src": "176:95:0",
             "stateMutability": "view",
             "superFunction": null,
@@ -1133,7 +1252,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 130,
+                              "referencedDeclaration": 140,
                               "src": "366:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1235,7 +1354,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 130,
+                          "referencedDeclaration": 140,
                           "src": "409:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1330,7 +1449,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 130,
+                          "referencedDeclaration": 140,
                           "src": "435:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1431,18 +1550,128 @@
               "parameters": [],
               "src": "333:0:0"
             },
-            "scope": 58,
+            "scope": 68,
             "src": "279:191:0",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 66,
+              "nodeType": "Block",
+              "src": "515:39:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 64,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "526:20:0",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 60,
+                        "name": "myGame",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5,
+                        "src": "526:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_uint16_$",
+                          "typeString": "mapping(address => uint16)"
+                        }
+                      },
+                      "id": 63,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 61,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 140,
+                          "src": "533:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 62,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "533:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "526:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint16",
+                        "typeString": "uint16"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "id": 65,
+                  "nodeType": "ExpressionStatement",
+                  "src": "526:20:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 67,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "investGame",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 58,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "495:2:0"
+            },
+            "returnParameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "515:0:0"
+            },
+            "scope": 68,
+            "src": "476:78:0",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 59,
-        "src": "27:446:0"
+        "scope": 69,
+        "src": "27:530:0"
       }
     ],
-    "src": "0:473:0"
+    "src": "0:557:0"
   },
   "compiler": {
     "name": "solc",
@@ -1453,11 +1682,11 @@
       "events": {},
       "links": {},
       "address": "0x4118A8669EE49C4A9b6Aaa288A85258EeD2A7e8f",
-      "transactionHash": "0x570f6c9979bf8711a9e2d1f1aea536cf869f2e75c3fe0d508ef2b7f392bde939"
+      "transactionHash": "0x5d1a15053f4edfb4908e386baf1e48ea2f0e6536caf1ba8b78e48b8f96bd5fa9"
     }
   },
-  "schemaVersion": "3.0.15",
-  "updatedAt": "2019-09-16T11:31:31.788Z",
+  "schemaVersion": "3.0.16",
+  "updatedAt": "2019-09-23T08:32:10.618Z",
   "devdoc": {
     "methods": {}
   },
