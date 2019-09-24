@@ -30,7 +30,7 @@ export const storeProducts = [
   },
   {
     id: 3,
-    title: "Sid Meier’s Civilization® VI",
+    title: "Sid Meier’s CivilizationVI ",
     img: "img/product-12.jpg",
     price: 0.26,
     company: "Firaxis Games",
