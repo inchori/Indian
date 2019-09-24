@@ -27,13 +27,13 @@ export default class Modal extends Component {
                       <h5>{title}</h5>
                       <h5 className="text-muted">price : {price}ETH</h5>
                       <Link to="/">
-                        <ButtonContainer
+                        <Button
                           onClick={() => {
                             closeModal();
                           }}
                         >
                           Continue Shopping
-                        </ButtonContainer>
+                        </Button>
                       </Link>
                       <Link to="/cart">
                         <ButtonContainer
@@ -70,4 +70,31 @@ const ModalContainer = styled.div`
   #modal {
     background: var(--mainWhite);
   }
+`;
+
+const Button = styled.button`
+text-transform: capitalize;
+font-size: 1.4rem;
+background: transparent;
+border: 0.05rem solid var(--mainBlue);
+border-color: ${props =>
+  props.cart ? "var(--mainYellow)" : "var(--mainBlue)"};
+color: var(--mainWhite);
+color: ${props => (props.cart ? "var(--mainYellow)" : "var(--mainBlue)")};
+border-radius: 0.5rem;
+padding: 0.2rem 0.5rem;
+outline-color: red;
+cursor: pointer;
+display: inline-block;
+margin: 0.2rem 0.5rem 0.2rem 0;
+transition: all 0.5s ease-in-out;
+&:hover {
+  background: var(--mainBlue);
+  background: ${props =>
+    props.cart ? "var(--mainYellow)" : "var(--mainBlue)"};
+  color: var(--mainWhite);
+}
+&:focus {
+  outline: none;
+}
 `;

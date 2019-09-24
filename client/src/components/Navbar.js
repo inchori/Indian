@@ -24,20 +24,20 @@ https://www.iconfinder.com/Makoto_msk */}
             </Link>
           </li>
         </ul>
-        <Link to="/cart" className="ml-auto">
+        <Link to="/game" className="ml-auto">
+          <ButtonContainer>
+            <span className="mr-2">
+              <i className="fa fa-gamepad" />
+            </span>
+            MY GAME
+          </ButtonContainer>
+        </Link>
+        <Link to="/cart"> 
           <ButtonContainer>
             <span className="mr-2">
               <i className="fas fa-cart-plus" />
             </span>
             MY CART
-          </ButtonContainer>
-        </Link>
-        <Link to="/game" className="ml-auto">
-          <ButtonContainer>
-            <span className="mr-2">
-              <i className="fas fa-cart-plus" />
-            </span>
-            MY GAME
           </ButtonContainer>
         </Link>
       </Nav>

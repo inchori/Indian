@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ProductConsumer } from "../context";
 import { ButtonContainer } from "./Button";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 export default class Details extends Component {
   render() {
@@ -49,9 +50,10 @@ export default class Details extends Component {
                   {/* buttons */}
                   <div>
                     <Link to="/">
-                      <ButtonContainer>back to products</ButtonContainer>
+                      <ButtonContainer></ButtonContainer>
+                      <Button>back to products</Button>
                     </Link>
-                    <ButtonContainer
+                    <ButtonContainer 
                       cart
                       disabled={inCart ? true : false}
                       onClick={() => {
@@ -71,3 +73,30 @@ export default class Details extends Component {
     );
   }
 }
+
+const Button = styled.button`
+text-transform: capitalize;
+font-size: 1.4rem;
+background: transparent;
+border: 0.05rem solid var(--mainBlue);
+border-color: ${props =>
+  props.cart ? "var(--mainYellow)" : "var(--mainBlue)"};
+color: var(--mainWhite);
+color: ${props => (props.cart ? "var(--mainYellow)" : "var(--mainBlue)")};
+border-radius: 0.5rem;
+padding: 0.2rem 0.5rem;
+outline-color: red;
+cursor: pointer;
+display: inline-block;
+margin: 0.2rem 0.5rem 0.2rem 0;
+transition: all 0.5s ease-in-out;
+&:hover {
+  background: var(--mainBlue);
+  background: ${props =>
+    props.cart ? "var(--mainYellow)" : "var(--mainBlue)"};
+  color: var(--mainWhite);
+}
+&:focus {
+  outline: none;
+}
+`;

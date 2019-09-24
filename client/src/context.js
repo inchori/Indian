@@ -78,6 +78,7 @@ class ProductProvider extends Component {
         accounts: this.state.accounts,
         web3: this.state.web3,
         contract: this.state.contract
+
       };
     }, this.addTotals);
     console.log(this.state.products);
@@ -164,7 +165,6 @@ class ProductProvider extends Component {
       gas: 900000
     });
   };
-
   investGame = () => {
     if(!this.state.contract) {
       alert('No Wallet Address!');

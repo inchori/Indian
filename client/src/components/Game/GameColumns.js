@@ -15,7 +15,7 @@ export default class GameColumns extends Component {
             <p className="text-uppercase">price</p>
           </div>
           <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">remove</p>
+            <p className="text-uppercase">refund</p>
           </div>
         </div>
       </div>
