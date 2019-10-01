@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 
 export default class GameItem extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      icon: null,
+    }
+  }
+  componentDidMount(){// Practicing this setState
+    setTimeout(() => {
+      this.setState({
+        icon: "fas fa-download",
+      })
+    }, 3500)
+  }
   render() {
     const { id, title, img, price } = this.props.item;
     const { removeItem } = this.props.value;
@@ -22,6 +35,12 @@ export default class GameItem extends Component {
           <strong>
             <span className="d-lg-none">price :</span> {price} ETH
           </strong>
+        </div>
+        
+        <div className="col-10 mx-auto col-lg-2 ">
+          <div onClick={() => removeItem(id)}>
+            <i className={this.state.icon}></i>
+          </div>
         </div>
         <div className="col-10 mx-auto col-lg-2 ">
           <div className=" cart-icon" onClick={() => removeItem(id)}>
