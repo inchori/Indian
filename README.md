@@ -10,13 +10,13 @@ Indian is a Game Distribution Platform DApp such as Steam, Origin etc
 
 ## Installation
 
-``` npm install
+``` npm install ```
 
-``` truffle compile
+``` truffle compile ```
 
-``` truffle migrate
+``` truffle migrate --reset```
 
-``` cd client && npm start
+``` cd client && npm start ```
 
 ## Indian's Architecture
 
